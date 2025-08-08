@@ -1,0 +1,99 @@
+diff --git a/examples/dynsub/CMakeLists.txt b/examples/dynsub/CMakeLists.txt
+index 87a0f349..a425c78f 100644
+--- a/examples/dynsub/CMakeLists.txt
++++ b/examples/dynsub/CMakeLists.txt
+@@ -1,4 +1,5 @@
+-# Copyright(c) 2023 ZettaScale Technology and others
++#
++# Copyright(c) 2021 ZettaScale Technology and others
+ #
+ # This program and the accompanying materials are made available under the
+ # terms of the Eclipse Public License v. 2.0 which is available at
+@@ -7,29 +8,21 @@
+ # http://www.eclipse.org/org/documents/edl-v10.php.
+ #
+ # SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
+-
++#
+ cmake_minimum_required(VERSION 3.16)
++
+ project(dynsub LANGUAGES C)
+ 
++
+ if(NOT TARGET CycloneDDS::ddsc)
+   find_package(CycloneDDS REQUIRED)
+ endif()
+ 
+-set(headers
+-  dynsub.h)
+-set(sources
+-  dynsub.c
+-  type_cache.c
+-  print_type.c
+-  print_sample.c)
+-
+-add_executable(dynsub ${sources} ${headers})
+-
++add_executable(dynsub dynsub.c)
+ if(TARGET CycloneDDS::ddsc)
+   # shouldn't need this ...
+   target_include_directories(dynsub
+     PRIVATE
+-    "${CMAKE_CURRENT_SOURCE_DIR}/../../src/core/cdr/include"
+     "${CMAKE_CURRENT_SOURCE_DIR}/../../src/core/ddsi/include")
+ endif()
+ target_link_libraries(dynsub CycloneDDS::ddsc)
+diff --git a/examples/helloworld/CMakeLists.txt b/examples/helloworld/CMakeLists.txt
+index c7292d5d..eb8b7222 100644
+--- a/examples/helloworld/CMakeLists.txt
++++ b/examples/helloworld/CMakeLists.txt
+@@ -10,8 +10,10 @@
+ # SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
+ #
+ cmake_minimum_required(VERSION 3.16)
++
+ project(helloword LANGUAGES C)
+ 
++
+ if(NOT TARGET CycloneDDS::ddsc)
+   # Find the CycloneDDS package.
+   find_package(CycloneDDS REQUIRED)
+diff --git a/examples/listtopics/CMakeLists.txt b/examples/listtopics/CMakeLists.txt
+index 42e14a36..3bfdac72 100644
+--- a/examples/listtopics/CMakeLists.txt
++++ b/examples/listtopics/CMakeLists.txt
+@@ -10,8 +10,10 @@
+ # SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
+ #
+ cmake_minimum_required(VERSION 3.16)
++
+ project(listtopics LANGUAGES C)
+ 
++
+ if(NOT TARGET CycloneDDS::ddsc)
+   find_package(CycloneDDS REQUIRED)
+ endif()
+diff --git a/examples/roundtrip/CMakeLists.txt b/examples/roundtrip/CMakeLists.txt
+index 916187ec..96df39fd 100644
+--- a/examples/roundtrip/CMakeLists.txt
++++ b/examples/roundtrip/CMakeLists.txt
+@@ -10,6 +10,7 @@
+ # SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
+ #
+ cmake_minimum_required(VERSION 3.16)
++
+ project(roundtrip LANGUAGES C)
+ 
+ if(NOT TARGET CycloneDDS::ddsc)
+diff --git a/examples/throughput/CMakeLists.txt b/examples/throughput/CMakeLists.txt
+index 17ad2757..cfc3ba87 100644
+--- a/examples/throughput/CMakeLists.txt
++++ b/examples/throughput/CMakeLists.txt
+@@ -10,6 +10,7 @@
+ # SPDX-License-Identifier: EPL-2.0 OR BSD-3-Clause
+ #
+ cmake_minimum_required(VERSION 3.16)
++
+ project(throughput LANGUAGES C)
+ 
+ if(NOT TARGET CycloneDDS::ddsc)
