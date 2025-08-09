@@ -1,0 +1,7 @@
+[requires]
+cyclonedds/0.10.5
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
