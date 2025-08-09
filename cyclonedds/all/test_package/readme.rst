@@ -44,25 +44,29 @@ When it receives the sample, the subscriber displays the ``userID`` and the ``me
 Building the example
 ********************
 
-From the recipes/cyclonedds/all/test_package directory:
+From the ``recipes/cyclonedds/all/test_package directory``:
 
-mkdir -p build
-conan install . --build=missing --output-folder build
+``mkdir -p build``
+``conan install . --build=missing --output-folder build``
 
 Assuming conan invocation is successful:
 
-cd build
-cmake ..
-cmake --build .
+``cd build``
+``cmake ..``
+``cmake --build .``
 
 A successful build results in two (2) executables in the ./build dir:
-- **HelloworldPublisher**
-- **HelloworldSubscriber**
+``HelloworldPublisher``
+``HelloworldSubscriber``
 
 Running the example
 *******************
 
 To avoid mixing the output, run the subscriber and publisher in separate terminals.
 
-.. include:: ../../../docs/manual/getting_started/helloworld/helloworld_run.part.rst
+From terminal #1 in ``recipes/cyclonedds/all/test_package directory``:
+``./build/HelloworldSubscriber``
+
+From terminal #2 in ``recipes/cyclonedds/all/test_package directory``:
+``./build/HelloworldPublisher``
 
