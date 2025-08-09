@@ -66,6 +66,11 @@ class CycloneDDSConan(ConanFile):
             "Visual Studio": "16",
         }
 
+    def _has_idlc(self, info=False):
+        # don't build idllib when it makes little sense or not supported
+        host_os = self.info.settings.os if info else self.settings.os
+        return host_os not in ["Android", "iOS", "watchOS", "tvOS", "Neutrino"]
+
     def export_sources(self):
         # Keep patches + custom cmake snippet for idlc
         export_conandata_patches(self)
